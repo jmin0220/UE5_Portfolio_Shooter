@@ -160,12 +160,12 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAxis(TEXT("LookRightRate"), this, &AShooterCharacter::LookRightRate);
 }
 
-inline int AShooterCharacter::GetMaxAmmo() const
+int AShooterCharacter::GetMaxAmmo() const
 {
 	return GunArr_[static_cast<int>(gunState)]->GetMaxAmmo();
 }
 
-inline int AShooterCharacter::GetAmmo() const
+int AShooterCharacter::GetAmmo() const
 {
 	return GunArr_[static_cast<int>(gunState)]->GetAmmo();
 }

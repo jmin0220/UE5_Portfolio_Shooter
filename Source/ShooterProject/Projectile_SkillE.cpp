@@ -27,8 +27,8 @@ AProjectile_SkillE::AProjectile_SkillE()
 	RadialForceComponent_ = CreateDefaultSubobject<URadialForceComponent>(TEXT("RadialForce"));
 	RadialForceComponent_->SetupAttachment(RootComponent);
 
-	RadialForceComponent_->Radius = 500.0f;
-	RadialForceComponent_->ImpulseStrength = 2000.0f;
+	RadialForceComponent_->Radius = 300.0f;
+	RadialForceComponent_->ImpulseStrength = 1500.0f;
 	RadialForceComponent_->bImpulseVelChange = true;
 	RadialForceComponent_->bAutoActivate = false;
 }
@@ -96,7 +96,12 @@ void AProjectile_SkillE::Explode()
 	// 오브젝트 폭발 물리
 	RadialForceComponent_->FireImpulse();
 
-	// 메쉬를 숨김
-	BaseMesh_->SetHiddenInGame(true);
+	if (ExplosionParticles_)
+	{
+		// Hit Particle을 생성
+		UGameplayStatics::SpawnEmitterAtLocation(this, ExplosionParticles_, GetActorLocation(), GetActorRotation());
+	}
+
+	Destroy();
 }
 

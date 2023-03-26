@@ -45,7 +45,7 @@ void AFIrstAidKit::PlayerOverlapEvent(UPrimitiveComponent* OverlappedComponent, 
 	AShooterCharacter* tmpPlayer_ = Cast<AShooterCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	
 	// 체력이 100%가 아닌 경우에만
-	if (tmpPlayer_->GetHealthPercent() < 100.f)
+	if (tmpPlayer_->GetHealthPercent() < 1.f)
 	{
 		tmpPlayer_->AddHealth(AddHealth_);
 
